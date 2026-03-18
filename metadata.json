@@ -1,0 +1,5 @@
+{
+  "name": "Tic-Tac-Toe Pro",
+  "description": "A polished, animated Tic-Tac-Toe game built with React, Tailwind CSS, and Motion.",
+  "requestFramePermissions": []
+}
