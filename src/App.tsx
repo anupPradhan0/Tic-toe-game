@@ -65,39 +65,39 @@ export default function App() {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-md w-full space-y-8"
+        className="max-w-md w-full space-y-6 sm:space-y-8"
       >
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-5xl font-black tracking-tighter italic text-emerald-500 uppercase">
+          <h1 className="text-4xl sm:text-5xl font-black tracking-tighter italic text-emerald-500 uppercase">
             Tic-Tac-Toe
           </h1>
-          <p className="text-zinc-500 font-mono text-sm tracking-widest uppercase">
+          <p className="text-zinc-500 font-mono text-xs sm:text-sm tracking-widest uppercase">
             The Classic Reimagined
           </p>
         </div>
 
         {/* Scoreboard */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className={`p-4 rounded-2xl border transition-all duration-300 ${isXNext && !winner ? 'bg-emerald-500/10 border-emerald-500/50' : 'bg-zinc-900 border-zinc-800'}`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <div className={`p-3 sm:p-4 rounded-2xl border transition-all duration-300 ${isXNext && !winner ? 'bg-emerald-500/10 border-emerald-500/50' : 'bg-zinc-900 border-zinc-800'}`}>
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">Player X</span>
               <User size={14} className={isXNext && !winner ? 'text-emerald-500' : 'text-zinc-600'} />
             </div>
-            <div className="text-3xl font-black">{scores.X}</div>
+            <div className="text-2xl sm:text-3xl font-black">{scores.X}</div>
           </div>
-          <div className={`p-4 rounded-2xl border transition-all duration-300 ${!isXNext && !winner ? 'bg-emerald-500/10 border-emerald-500/50' : 'bg-zinc-900 border-zinc-800'}`}>
+          <div className={`p-3 sm:p-4 rounded-2xl border transition-all duration-300 ${!isXNext && !winner ? 'bg-emerald-500/10 border-emerald-500/50' : 'bg-zinc-900 border-zinc-800'}`}>
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">Player O</span>
               <User size={14} className={!isXNext && !winner ? 'text-emerald-500' : 'text-zinc-600'} />
             </div>
-            <div className="text-3xl font-black">{scores.O}</div>
+            <div className="text-2xl sm:text-3xl font-black">{scores.O}</div>
           </div>
         </div>
 
         {/* Game Board */}
-        <div className="relative aspect-square bg-zinc-900 rounded-3xl p-4 border border-zinc-800 shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-3 gap-3 h-full">
+        <div className="relative aspect-square bg-zinc-900 rounded-3xl p-3 sm:p-4 border border-zinc-800 shadow-2xl overflow-hidden">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 h-full">
             {board.map((cell, i) => (
               <motion.button
                 key={i}
@@ -105,7 +105,7 @@ export default function App() {
                 whileTap={{ scale: cell || winner ? 1 : 0.95 }}
                 onClick={() => handleClick(i)}
                 className={`
-                  relative flex items-center justify-center text-5xl font-black rounded-xl transition-colors
+                  relative flex items-center justify-center text-4xl sm:text-5xl font-black rounded-lg sm:rounded-xl transition-colors
                   ${winningLine?.includes(i) ? 'bg-emerald-500 text-zinc-950' : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-100'}
                   ${!cell && !winner ? 'cursor-pointer' : 'cursor-default'}
                 `}
@@ -132,7 +132,7 @@ export default function App() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-zinc-950/80 backdrop-blur-md p-8 text-center"
+                className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-zinc-950/80 backdrop-blur-md p-6 sm:p-8 text-center"
               >
                 <motion.div
                   initial={{ y: 20 }}
@@ -140,16 +140,16 @@ export default function App() {
                   className="space-y-4"
                 >
                   <div className="flex justify-center">
-                    <div className="p-4 bg-emerald-500 rounded-full text-zinc-950">
-                      {winner === 'Draw' ? <Hash size={48} /> : <Trophy size={48} />}
+                    <div className="p-3 sm:p-4 bg-emerald-500 rounded-full text-zinc-950">
+                      {winner === 'Draw' ? <Hash size={44} /> : <Trophy size={44} />}
                     </div>
                   </div>
-                  <h2 className="text-4xl font-black uppercase italic tracking-tighter">
+                  <h2 className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter">
                     {winner === 'Draw' ? "It's a Draw!" : `Player ${winner} Wins!`}
                   </h2>
                   <button
                     onClick={resetGame}
-                    className="w-full py-4 px-8 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-2xl transition-all flex items-center justify-center gap-2 group"
+                    className="w-full py-3 sm:py-4 px-8 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-2xl transition-all flex items-center justify-center gap-2 group"
                   >
                     <RefreshCw size={20} className="group-hover:rotate-180 transition-transform duration-500" />
                     Play Again
@@ -164,7 +164,7 @@ export default function App() {
         <div className="flex justify-center">
           <button
             onClick={resetGame}
-            className="flex items-center gap-2 text-zinc-500 hover:text-zinc-100 transition-colors text-sm font-bold uppercase tracking-widest"
+            className="flex items-center gap-2 text-zinc-500 hover:text-zinc-100 transition-colors text-xs sm:text-sm font-bold uppercase tracking-widest"
           >
             <RefreshCw size={16} />
             Reset Match
